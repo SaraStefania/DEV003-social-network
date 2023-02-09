@@ -53,16 +53,20 @@ body {
 /* LOGO */
 .logo-container {
   display: flex;
-}
-
-.logo-container img {
+  margin: 0 ;
+  background-color: #DECFB5;
+  height: 110px;
+  width: 400px;
+  }
+  .logo-container img {
   object-fit: cover;
-  width: 100px;
-  height: 100px;
-}
-.logo-container h1 {
-  margin-top: 60px;
-}
+  height: 80px;
+  margin-left: 25px;
+  margin-top: 15px ;
+  }
+  .logo-container h1 {
+  margin-top: 40px;
+  }
 
 /* ************************************************ */
 /* LOGIN VIEW */
@@ -89,6 +93,9 @@ body {
   background-color: #decfb5;
   height: 30px;
   padding: 15px;
+  width: 280px;
+  margin-left: 50px;
+  text-align: center;
 }
 
 .container-item input:focus {
@@ -162,9 +169,79 @@ body {
 }
 /* ************************************************ */
 /* DASHBOARD VIEW */
+.post-container {
+  display: flex;
+  /* flex-wrap: wrap; */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  /* height: 100vh; */
+  width: 400px;
+  margin: 50px auto;
+}
+.post-container h4 {
+  margin-top: 20px;
+  margin-left: 10px;
+}
+.post-container input {
+  color: #542f17;
+  margin-top: 1px;
+  margin-bottom: 15px;
+  margin-left: 9px;
+  border: 1px solid #8c4e2a;
+  background-color: #decfb5;
+  height: 30px;
+  min-width: 380px;
+  padding: 15px;
+}
 
+.post-container textarea {
+  color: #542f17;
+  margin-bottom: 15px;
+  margin-left: 9px;
+  border: 1px solid #8c4e2a;
+  background-color: #decfb5;
+  height: 200px;
+  min-width: 380px;
+  /*padding: 15px;*/
+}
+.button-post-save {
+  background-color: #f57b53;
+  border: 1px solid #a6977b;
+  border-radius: 15px;
+  color: #fff;
+  padding: 15px;
+  margin-left: 150px;
+  
+}
 /* ************************************************ */
 /* FOOTER */
+.footer-container{
+  background-color: #DECFB5;
+  height: 110px;
+  width: 400px;
+  margin-top: 45px ;
+  display: flex;
+  }
+  footer{
+  text-align: center;
+  margin-top: 2px;
+  }
+  /*nombre y logo github*/
+  .nombres{
+  display: flex;
+  }
+  .name-footer{
+  text-align: center;
+  margin: 2px 38px;
+  color: #6583BF;
+  }
+  .logo-github{
+  height: 30px;
+  margin: 0 50px;
+  }
+
 
 @media only screen and (min-width: 800px) {
   .container {
