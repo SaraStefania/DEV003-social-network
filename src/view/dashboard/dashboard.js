@@ -1,5 +1,4 @@
 import { footer } from '../../components/footer.js';
-
 import {
   addPost, onGetPost, postEdit, deletePost, removeLike, addLike, logout,
 } from '../../firebase/firebase.js';
@@ -49,9 +48,10 @@ export const dashboard = () => {
   onGetPost((querySnapshot) => {
     let html = '';
     const postsContainer = document.getElementById('posts-container');
+    // itera sobre los docuemntos
     querySnapshot.forEach((doc) => {
+      // extrae los datos
       const post = doc.data();
-      console.log(post.userId);
       html += `
       <article>
         <div class="user-info">
@@ -59,6 +59,7 @@ export const dashboard = () => {
           <p>${post.name ? post.name : post.username}</p>
         </div>
         `;
+      // si coinciden
       if (post.userId === auth.currentUser.uid) {
         html += `
         <div class="admin-btns">
@@ -93,15 +94,18 @@ export const dashboard = () => {
     // funcion editar
     const btnEditPost = postsContainer.querySelectorAll('.edit-button');
     btnEditPost.forEach((button) => {
+      // para acceder al dataset que contiene el id y el nombre del post
       button.addEventListener('click', ({ target: { dataset } }) => {
+        // para acceder al dataset que contiene el id y el nombre del post
         const { post, id } = JSON.parse(dataset.id);
         const inputTitle = viewDashboard.querySelector('#post-title');
         const inputDescription = viewDashboard.querySelector('#post-description');
         const inputId = viewDashboard.querySelector('#post-id');
+        // Se establece el valor de los campos
         inputTitle.value = post.title;
         inputDescription.value = post.description;
-
         inputId.value = id;
+        // empezar a editar inmediatamente
         inputTitle.focus();
       });
     });
@@ -110,6 +114,7 @@ export const dashboard = () => {
     const btnDelete = postsContainer.querySelectorAll('.eliminar');
     btnDelete.forEach((button) => {
       button.addEventListener('click', ({ target: { dataset } }) => {
+        // eslint-disable-next-line no-restricted-globals
         const isConfirmed = confirm('¿Está seguro de que desea eliminar esta publicación?');
         if (isConfirmed) {
           deletePost(dataset.id);
@@ -119,12 +124,17 @@ export const dashboard = () => {
 
     // funcion dar like
     const likeButton = postsContainer.querySelectorAll('.like-button');
+    // iterar sobre cada boton
     likeButton.forEach((like) => {
+      // para acceder al dataset que contiene el id y el nombre del post
       like.addEventListener('click', ({ target: { dataset } }) => {
+        // analiza y extrae post y el id
         const { post, id } = JSON.parse(dataset.id);
+        // se obtinee el id del ussuaio registrado
         const userId = auth.currentUser.uid;
         const postId = id;
         console.log(userId, postId);
+        // se comprueba si el id del usuario esta en la lista de likes
         if (post.likes.includes(userId)) {
           removeLike(userId, postId);
         } else {
@@ -143,10 +153,12 @@ export const dashboard = () => {
     const id = viewDashboard.querySelector('#post-id').value;
     if (title === '' || description === '') {
       alert('Debes completar todos los campos');
+      // Si los campos de entrada están completos y no se ha proporcionado un valor de id
     } else if (!id) {
       addPost(title, description);
       viewDashboard.querySelector('#post-form').reset();
     } else {
+      // eslint-disable-next-line no-restricted-globals
       const isConfirmed = confirm('¿Está seguro de que desea guardar los cambios en esta publicación?');
       if (isConfirmed) {
         postEdit(id, title, description);

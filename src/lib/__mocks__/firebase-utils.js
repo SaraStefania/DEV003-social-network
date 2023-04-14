@@ -1,10 +1,12 @@
+// se utiliza para simular
 export const signInWithPopup = jest.fn(
   () => new Promise((resolve) => {
+    // se resuleve con el user simulado y con un vacio
     resolve({ user: { displayName: '' } });
   }),
 );
 export const initializeApp = jest.fn();
-
+// Este método estático no realiza ninguna acción, ya que no se define ninguna devolución de llamada
 export class GoogleAuthProvider { static credentialFromResult() { } }
 
 export const getAuth = jest.fn();

@@ -4,6 +4,7 @@ import errorIcon from '../../assets/error.png';
 export const loginErrorHandler = (error) => {
   const errorCode = error.code;
   console.log(errorCode);
+  // alamcena
   const errorFeedback = document.getElementById('error-feedback');
 
   if (errorCode === 'auth/invalid-email') {

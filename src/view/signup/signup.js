@@ -77,7 +77,6 @@ export const signup = () => {
   // GOOGLE LOGIN
   viewSignUp.querySelector('#login-google').addEventListener('click', () => {
     ssoGoogle();
-    // console.log('hola');
   });
 
   // REGISTRO
@@ -96,10 +95,7 @@ export const signup = () => {
 
         const emailIsValid = validateEmail(email);
         const passwordIsValid = validatePassword(password);
-        const passwordConfirmIsValid = validateConfirmPassword(
-          password,
-          passwordConfirm,
-        );
+        const passwordConfirmIsValid = validateConfirmPassword(password, passwordConfirm);
         const nicknameIsValid = validateNickname(nickname);
         if (
           !emailIsValid
@@ -109,14 +105,15 @@ export const signup = () => {
         ) {
           return false;
         }
-
+        // se asigna el resultado
         const userCredential = await newRegister(email, password, nickname);
         const user = userCredential.user;
         const userId = user.uid;
         const userEmail = user.email;
+        // contiene la informacion de la collecion de usuarios
         userData(userId, userEmail);
         await sendVerification();
-        alert('Se envío un enlace de verificación a tu correo.');
+        alert('Se envío un enlace de verificación a tu correo');
         window.location.hash = '#/login';
         return true;
       } catch (err) {
