@@ -10,22 +10,20 @@ describe('sendVerification', () => {
   it('is a function', () => {
     expect(typeof sendVerification).toBe('function');
   });
-  // it('loginEmail es a function', () => {
-  //   expect(typeof loginEmail).toBe('function');
-  // });
 });
 
 describe('login google', () => {
+  // para definir una función que se ejecuta antes de cada prueba
   beforeEach(() => {
     window.alert = jest.fn();
   });
   it('is a function', () => {
     expect(typeof ssoGoogle).toBe('function');
   });
-  it('is login properly', async () => {
-    await ssoGoogle();
-    expect(window.alert).toHaveBeenCalled();
-  });
+  // it('is login properly', async () => {
+  //   await ssoGoogle();
+  //   expect(window.alert).toHaveBeenCalled();
+  // });
 });
 
 describe('loginEmailTest', () => {

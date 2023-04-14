@@ -3,13 +3,11 @@ import errorIcon from '../../assets/error.png';
 // FUNCION PARA VALIDAR INPUT DEL CORREO
 export const validateEmail = (email) => {
   const emailErrorText = document.getElementById('email-validation');
-  console.log({ function: 'validateEmail', email });
+  // borrar cyalquier error
   emailErrorText.innerHTML = '';
   if (/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
-    // console.log("Email is valid");
     return true;
   }
-  // console.log("Email is invalid");
   emailErrorText.innerHTML = `<img src=${errorIcon} alt="error" class="error-icon" />
   <span>El correo ingresado no es válido.</span>`;
   return false;
